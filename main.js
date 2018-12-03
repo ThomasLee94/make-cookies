@@ -212,44 +212,43 @@ let dragonPitPrice = document.getElementById('dragon-pit-price');
 let dragonPitLevel = document.getElementById('dragon-pit-level');
 
 //buy a facility
-buyFacility.addEventListener("click", function(){
+buyDragonPit.addEventListener("click", function(){
     //set autoLoop to false
-    facilityAuto = false;
+    dragonAuto = false;
 
     //make sure we have enough cookies
-    if (cookieCount >= facilityPriceAmount){
-        cookieCount -= facilityPriceAmount;
+    if (cookieCount >= dragonPitPrice){
+        cookieCount -= dragonPitPrice;
         refreshCookieCount(); 
     }
-
     //upgrade power level
-    facilityLevelNumber += 1;
+    dragonPitLevel += 1;
 
     //update price
-    facilityPower += 600 + Math.floor(facilityLevelNumber * 1.33);
+    dragonPower += 600 + Math.floor(dragonPitLevel * 1.33);
 
     //update facility power
-    facilityPower += 600;
+    dragonPower += 600;
 
-    //turn autoFacility on!
-    facilityAuto = true
+    //turn dragonFacility on!
+    dragonAuto = true
     autoFacilityStart();
 
     //refresh shop item
-    refreshFacility();
+    refreshDragon();
 })
 
 //game loop
-let autoFacilityStart =  function() {
-    let facilityInt = window.setInterval(function(){
-        cookieCount += facilityPower;
+let autoDragonStart =  function() {
+    let dragonInt = window.setInterval(function(){
+        cookieCount += dragonPower;
         refreshCookieCount(); 
-    }, 1000)
+    }, 1500)
 }
 
 //refresh shop
-let refreshFacility = function(){
-    facilityLevel.innerHTML = facilityLevelNumber
-    facilityPrice.innerHTML = facilityPriceAmount;
-    facilityMultiple.innerHTML = facilityPower - 600;
+let refreshDragon = function(){
+    dragonPitLevel.innerHTML = facilityLevelNumber
+    dragonPitPrice.innerHTML = facilityPriceAmount;
+    dragonMultiple.innerHTML = facilityPower - 600;
 }
